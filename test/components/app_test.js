@@ -1,14 +1,14 @@
 import { renderComponent, expect } from '../test_helper';
 import App from '../../src/components/app';
 
-// Group together similar tests
 describe('App', () => {
-  // What are we testing in the target?
-  it('shows the correct text', () => {
-    // Create an instance of App component
-    const component = renderComponent(App);
+  let component;
 
-    // What should we assert about the target?
-    expect(component).to.contain('Testing In React');
+  beforeEach(() => {
+    component = renderComponent(App);
+  });
+
+  it('shows a comment box', () => {
+    expect(component.find('.comment-box')).to.exist;
   });
 });
