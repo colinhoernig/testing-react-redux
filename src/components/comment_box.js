@@ -19,13 +19,23 @@ class CommentBox extends Component {
     this.setState({ comment: '' });
   }
 
+  handleKeyUp(event) {
+    if (event.keyCode === 13 && !event.shiftKey) {
+      this.handleSubmit(event);
+    }
+  }
+
   render() {
     return (
       <form onSubmit={this.handleSubmit.bind(this)} className="comment-box">
+      <h4>Add a comment</h4>
         <textarea
           value={this.state.comment}
-          onChange={this.handleChange.bind(this)} />
-        <button action="submit">Submit Comment</button>
+          onChange={this.handleChange.bind(this)}
+          onKeyUp={this.handleKeyUp.bind(this)} />
+        <div>
+          <button type="submit">Submit Comment</button>
+        </div>
       </form>
     );
   }
